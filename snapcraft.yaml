@@ -1,0 +1,29 @@
+name: bsterminal
+version: 0.20.4
+summary: Cross-Platform Benchmark
+description: |
+     BlockSettle Terminal is BitCoin wallet that works with ArmoryDB 
+     local and remote instances.
+
+confinement: devmode
+base: core18
+
+parts:
+  blocksettle:
+    plugin: dump
+    source: terminal_release.tgz
+#    after:
+#      - desktop-qt5
+    build-attributes: [keep-execstack]
+    stage-packages:
+      - libc6
+      - libqt5core5a
+      - libxml2-dev
+
+apps:
+  blocksetttle:
+    command: blocksettle
+
+apps:
+  blocksetttlesigner:
+    command: blocksettle_signer
